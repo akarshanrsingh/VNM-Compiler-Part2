@@ -1,0 +1,29 @@
+// Test simple statements 
+// print_stat  	::= 	PRINT print_list
+// println_stat  	::= 	PRINTLN (print_list)?
+// print_list	::=	(expression | STRING) ("," (expression | STRING))*
+print ?a;
+println;
+println 3567;
+print ?a,#B,"arg3",12;
+println "arg1",v_e, "arg2";
+
+// Test if statements
+// if_stat		::=	IF condition THEN clause elifs (ELSE clause)? FI
+// elifs			::=	(ELIF condition THEN clause)*
+// clause		::=	(statement ";")+
+if #0 then return 2; fi;
+if #1 then return 2; else return 3; fi;
+if ?a then return 2; elif ?b then return 4; fi;
+if ?a then return 2; elif ?b then return 4; else return 5; fi;
+if ?a then return 2; elif ?b then return 4; elif ?c then return 6; fi;
+if ?a then return 2; elif ?b then return 4; elif ?c then return 6; else return 7; fi;
+if ?a then return 2; return 4; else return 6; return 7; fi;
+
+// Test loops
+// for_stat	::=	FOR IDNUM IN exp_list DO body END
+// while_stat	::=	WHILE condition DO body END
+// body			::=	(statement ";")*
+for #i =in 1 do end;
+for #j =in 2,3,#b do print ?a; end;
+while #1 do end;

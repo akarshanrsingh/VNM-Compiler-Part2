@@ -1,0 +1,10 @@
+//------------------------------------------------------------------------------------------------
+// Add complicated expressions to some of the previous tests
+//------------------------------------------------------------------------------------------------
+v_a := [1,2,5,7];
+print 2+3;
+println #a+12*12+45;
+println -5*#hello-(2+#there);
+for #i =in [#a,#B,#c,22] do end;
+for #j =in 2,3,[#x,#Y] do print #a,#f([#sweet,#stuff]); v_B:=[1,2]; println; end;
+#B := #dosomething3(#a, [2,3]) * #dosomething4([#hello,#world]);

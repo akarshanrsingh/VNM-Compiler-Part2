@@ -1,0 +1,30 @@
+// Test conditions with comparisons
+// while_stat		::=	WHILE condition DO body END
+
+// not_clause	::=	"!" not_clause | "(" condition ")" | comparison | fn_call | boolean
+// comparison	::=	expression comparator expression
+// comparator	::=	"<" | "<=" | ">" | ">=" |"==" | "!=" | "=in" | "!in"
+while !?a do end;
+while (?f()) do end;
+while (((#a<1))) do end;
+while !!!#a<1 do end;
+
+// and_clause		::=	not_clause ("&" and_clause)*
+while #a<1 & #b<=2 do end;
+while #a>1 & #b<=2 & #c==3 & #d!=4 do end;
+while #a =in 1 & ! #b!in2 & ! ! #c<3 & ! (#d<4) do end;
+
+// condition		::=	and_clause ("|" condition)*
+while #a<1 | #b<2 do end;
+while #a<1 | #b<2 | #c<3 | #d<4 do end;
+
+// Operator | precedence
+while #a<1 | #b<2 & ! #c<3 do end;
+while ! #a<1 & #b<2 | #c<3 do end;
+while ! #a<1 & !  #b<2 | ! #c<3 & ! #d<4 do end;
+
+// Override precedence with parentheses
+while ! (#a<1 & #b<2) do end;
+while ! (#a<1 | #b<2) do end;
+while (#a<1 | #b<2) & (#c<3 | #d<4) do end;
+while ! ((#a<1 | #b<2) & (#c<3 | #d<4)) do end;

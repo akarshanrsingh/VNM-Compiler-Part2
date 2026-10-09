@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------------------------------
+// Test vector expressions and other misc things
+//------------------------------------------------------------------------------------------------
+// vec_const	::=	"[" (exp_list)? "]"
+[];
+[1+1];
+[#a,#B,#c,22];
+
+// assign_stat      ::=    IDNUM "=" expression | IDBOOL "=" condition | IDVEC "=" vec_const
+//                        | IDBOOL "=" condition
+#a := 3;
+v_A := [1,2+2];
+v_B := [];
+?c := #0;
+
+// fn_call		::=	identifier "(" (exp_list)? ")"
+// exp_list	::=	expression ("," expression)*
+// identifier	::=	IDNUM | IDVEC | IDBOOL
+#f();
+v_G(#a);
+?h(1,#b,v_C,25);

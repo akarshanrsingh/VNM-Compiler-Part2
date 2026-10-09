@@ -1,0 +1,37 @@
+// Test expressions
+// expression	::=	("+" | "-")? product (("+" | "-") expression)*
+// product		::=	term (("*" | "/" | "%") product)*
+// term		::=	"(" expression ")" | fn_call | simple_term
+
+// Test simple products, divisions, and mods
+#a*1;
+5/2;
+#a*#b;
+1*2*3;
+#c/#d/#e;
+1/2/3;
+#a*1/2-#d/#e*3+#f;
+
+// Test simple sums and differences
++1;
+-#z;
+v_A+[10,20];
+v_A+v_B;
+1+#A-#C+#d;
++#a+2-#c-#d+5-#f+#g;
+-#a+#b-3-#d+#e-#f+#g;
+
+// Test overriding precedence with parentheses
+(1);
+((1));
+((((1))));
+#a*#b+#c/#d;
+(#a*#b)+(#c/#d);
+#a+(#b+#c)/#d;
+((#a+#b)/(#c-#d))*(#e*#f);
+
+// Add fn calls
+(#f()-#G(1,2,3))-#h(#x,#y);
+
+
+

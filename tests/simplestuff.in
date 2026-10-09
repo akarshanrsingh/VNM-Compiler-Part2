@@ -1,0 +1,27 @@
+// Test simple terms
+// simple_term	::=	IDNUM | IDSET | NUMBER
+#thisisanIDNUM;
+v_thisisanIDVEC;
+1234;
+
+// vec_const	::=	"[" (exp_list)? "]"
+[];
+[-4+7];
+[0,-20];
+[#a,2,3];
+
+// Test all declarations
+// statement	::=	var_decl | fn_decl
+// var_decl	    ::=	VAR ident_list
+// ident_list	::=	identifier ("," identifier)*
+// identifier	::=	IDNUM | IDBOOL | IDVEC
+var v_a2;
+var ?B3,#c;
+var v_e,#F,?G,?h,v_I,#J;
+
+// fn_decl		::=	FUNCTION identifier "(" (ident_list)? ")" body END
+// body		::=	(statement ";")*
+function ?A() end;
+function v_b(v_c) return 1; end;
+function #d(#e,v_F,#G) return 42; end;
+

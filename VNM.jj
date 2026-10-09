@@ -1,0 +1,108 @@
+options 
+{
+  // Nothing to do here for Part #1
+  IGNORE_CASE=false;
+}
+
+PARSER_BEGIN(VNM)
+public class VNM 
+{
+  // Nothing to do here for Part #1
+}
+PARSER_END(VNM)
+
+TOKEN_MGR_DECLS : 
+{
+  // Nothing to do here for Part #1
+}
+
+// Characters/strings to be skipped 
+// (they don't contribute to a token)
+SKIP : 
+{
+        " "     
+    |   "\t"    
+    |   "\n"    
+    |   "\r" 
+}
+
+// Tokens where case matters can be defined here
+TOKEN : 
+{
+    < LESS:   "<"   >
+  | < LE: "<="  >
+  | < GREAT: ">" >
+  | < GE: ">=" >
+  | < EQ: "==" >
+  | < NEQ: "!=" >
+  | < IN: "=in" >
+  | < NOTIN: "!in" >
+  | < PLUS: "+" >
+  | < MINUS: "-" >
+  | < PROD: "*" >
+  | < DIV: "/" >
+  | < AND: "&" >
+  | < OR: "|" >
+  | < NOT: "!" >
+  | < ASSGN: ":=" >
+  | < LRND: "(" >
+  | < RRND: ")" >
+  | < LSQU: "[" >
+  | < RSQU: "]" >
+  | < COMMA: "," >
+  | < SCOL: ";" >
+  | < TRUE: "#1" >
+  | < FALSE: "#0" >
+  | < RANGE: ".." >
+}
+
+// Tokens where case doesn't matter can be defined here
+TOKEN [IGNORE_CASE]:
+{
+  < DO:"DO">
+| < WHILE:"WHILE">
+| < FOR: "FOR">
+| < IF: "IF">
+| < THEN: "THEN">
+| < ELIF: "ELIF">
+| < ELSE: "ELSE">
+| < FI: "FI">
+| < FUNCTION: "FUNCTION">
+| < RETURN: "RETURN">
+| < END: "END">
+| < PRINT: "PRINT">
+| < PRINTLN: "PRINTLN">
+| < VAR: "VAR">
+}
+
+TOKEN : 
+{
+  // Using regular expressions to define a number token
+  // You can do similar for identifiers and strings
+
+    < #DIGIT:	["0"-"9"]>
+|	< NUMBER:	(<DIGIT>)+ >  // A number is 1 or more digits
+//IDNUM - starts with # and a letter followed by 0 or more letter or digits
+|   < IDNUM: "#" (["a"-"z","A"-"Z"]) (["a"-"z","A"-"Z","0"-"9"])* >
+//IDBOOL - starts with ? and a letter followed by 0 or more letter or digits
+|   < IDBOOL: "?" (["a"-"z","A"-"Z"]) (["a"-"z","A"-"Z","0"-"9"])* >
+//IDVEC - start with "v_" followed by 1 or more letters or digits
+|   < IDVEC: "v_" (["a"-"z","A"-"Z","0"-"9"])+ >
+//IDMAT - start with "M_" followed by 1 or more letters or digits
+|   < IDMAT: "M_" (["a"-"z","A"-"Z","0"-"9"])+ >
+//String - keyboard charachters delimited by double quotes
+|    < STRING: "\"" ( ~["\\", "\"", "\n", "\r"] | ("\\" (["n","t","\"","\\"])) )* "\"" >
+}
+
+// Special tokens are saved, but not sent to the parser
+// Hint: Perhaps comments should go here...?
+// Remove the comments below when you're ready
+//As instructed, its to skip comments from // till end of line
+SPECIAL_TOKEN :
+{
+    < "//" (~["\n", "\r"])* >
+}
+   
+   
+   
+   
